@@ -24,19 +24,37 @@ Type 'q()' to quit R.
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
+> nameEx("foo")
+> ### * foo
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: foo
+> ### Title: Another example.
+> ### Aliases: foo
+> 
+> ### ** Examples
+> 
+> testshlib()
+character(0)
+> 
+> 
+> 
+> 
+> cleanEx()
 > nameEx("testshlib")
 > ### * testshlib
 > 
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: testshlib
-> ### Title: Test system / R CMD SHLIB.
+> ### Title: Test system return and status.
 > ### Aliases: testshlib
 > 
 > ### ** Examples
 > 
 > x <- 1+2
-> try(testshlib("abc"))
+> testshlib()
 character(0)
 > 
 > 
@@ -46,7 +64,7 @@ character(0)
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  0.052 0.002 0.06 0.002 0.002 
+Time elapsed:  0.139 0.005 0.178 0.01 0.011 
 > grDevices::dev.off()
 null device 
           1 

@@ -18,10 +18,10 @@ Type 'q()' to quit R.
 > Sys.setenv("R_TESTS" = "")
 > library(testthat)
 > library(shlltest)
-> test_check("shlltest")
-testthat results ================================================================
-OK: 1 SKIPPED: 0 FAILED: 0
+> test_check("shlltest",reporter="summary")
+.....
+DONE ===========================================================================
 > 
 > proc.time()
    user  system elapsed 
-  0.195   0.036   0.225 
+  0.542   0.092   0.614 

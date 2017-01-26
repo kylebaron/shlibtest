@@ -5,19 +5,36 @@ library('shlltest')
 
 base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 cleanEx()
+nameEx("foo")
+### * foo
+
+flush(stderr()); flush(stdout())
+
+### Name: foo
+### Title: Another example.
+### Aliases: foo
+
+### ** Examples
+
+testshlib()
+
+
+
+
+cleanEx()
 nameEx("testshlib")
 ### * testshlib
 
 flush(stderr()); flush(stdout())
 
 ### Name: testshlib
-### Title: Test system / R CMD SHLIB.
+### Title: Test system return and status.
 ### Aliases: testshlib
 
 ### ** Examples
 
 x <- 1+2
-try(testshlib("abc"))
+testshlib()
 
 
 

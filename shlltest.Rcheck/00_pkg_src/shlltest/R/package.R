@@ -1,42 +1,17 @@
-fun <- '
-void foo() {
-  double x = 2;
-  double y = 3;
-  x = x+y;
-}
-'
 
-##' Test system / R CMD SHLIB.
+
+##' Test system return and status.
 ##'
-##'
-##' @param dllname character
-##' @param loc where to build the 
+##' @param dontuse not used
 ##'
 ##' @examples
 ##' x <- 1+2
-##' try(testshlib("abc"))
+##' testshlib()
 ##' 
 ##' @importFrom utils capture.output
 ##'
 ##' @export
-testshlib <- function(dllname="xyz",loc=tempdir()) {
-  
-  # cpp <- paste0(dllname, ".cpp")
-  # 
-  # cwd <- getwd()
-  # setwd(loc)
-  # on.exit(setwd(cwd))
-  # 
-  # f.con <- file(cpp, open="w")
-  # cat(c(
-  #   "void foo() {",
-  #   "double x = 2;",
-  #   "double y = 3;",
-  #   "x = x+y;",
-  #   "}"),sep="\n",file=f.con)
-  # close(f.con)
-  # 
-  # cmd <- paste0("R CMD SHLIB ", cpp)
+testshlib <- function(dontuse=NULL) {
   
   cmd <- "ls -l"
   
@@ -47,12 +22,26 @@ testshlib <- function(dllname="xyz",loc=tempdir()) {
     status2 <- system(cmd,intern=TRUE,ignore.stdout=FALSE)
     status3 <- system(cmd,intern=FALSE,ignore.stdout=TRUE)
     
-    stop("intern/ignore   ", attr(status1 ,"status"), " ", 
-         "intern/noignore ", capture.output(attr(status2 ,"status")), " ",
-         "nointern/ignore ",      status3) 
+    msg <- paste("intern/ignore   ", attr(status1 ,"status"), " ", 
+                 "intern/noignore ", capture.output(attr(status2 ,"status")), " ",
+                 "nointern/ignore ",   status3) 
+    
+    stop(msg)
+    
   }
   
   return(status1)
   
 }
 
+##' Another example.
+##' 
+##' @param x character
+##' 
+##' @examples
+##' testshlib()
+##' 
+##' @export
+foo <- function(x) {
+  return(invisible(NULL))
+}

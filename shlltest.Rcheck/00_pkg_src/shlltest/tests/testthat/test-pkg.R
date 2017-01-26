@@ -1,10 +1,25 @@
 
-
-test_that("main",{
-  x1 <- testshlib("abc")
-  x2 <- testshlib("xyz")
-  x3 <- testshlib("aabbccdd")
+test_that("one",{
+  x1 <- testshlib()
   expect_true(TRUE)
-  
 })
 
+test_that("two",{
+  x2 <- testshlib()
+  expect_true(TRUE)
+})
+
+test_that("three",{
+  x2 <- testshlib()
+  expect_true(TRUE)
+})
+
+test_that("four",{
+  x2 <- testshlib()
+  expect_true(TRUE)
+})
+
+test_that("five",{
+  x2 <- testshlib()
+  expect_true(TRUE)
+})

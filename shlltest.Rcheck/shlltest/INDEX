@@ -1,1 +1,2 @@
-testshlib               Test system / R CMD SHLIB.
+foo                     Another example.
+testshlib               Test system return and status.

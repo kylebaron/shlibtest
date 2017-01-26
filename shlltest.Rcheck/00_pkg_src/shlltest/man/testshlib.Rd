@@ -2,21 +2,19 @@
 % Please edit documentation in R/package.R
 \name{testshlib}
 \alias{testshlib}
-\title{Test system / R CMD SHLIB.}
+\title{Test system return and status.}
 \usage{
-testshlib(dllname = "xyz", loc = tempdir())
+testshlib(dontuse = NULL)
 }
 \arguments{
-\item{dllname}{character}
-
-\item{loc}{where to build the}
+\item{dontuse}{not used}
 }
 \description{
-Test system / R CMD SHLIB.
+Test system return and status.
 }
 \examples{
 x <- 1+2
-try(testshlib("abc"))
+testshlib()
 
 }
 
