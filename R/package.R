@@ -20,7 +20,7 @@ systest <- function() {
     
     stop("intern/ignore   "  , attr(status1,"status"), " ", 
          "intern/noignore "  , attr(status2,"status"), " ",
-         "nointern/ignore "  , status3) 
+         "nointern/ignore "  ,      status3) 
   }
   
   return(status1)

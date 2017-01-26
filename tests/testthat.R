@@ -1,4 +1,5 @@
 Sys.setenv("R_TESTS" = "")
 library(testthat)
-test_check("shlibtest")
+library(systest)
+test_check("systest")
 
