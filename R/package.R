@@ -1,35 +1,30 @@
 
 
-##' Test system / R CMD SHLIB.
+##' Test system return values.
 ##'
-##'
-##' @param dllname character
-##' @param loc where to build the 
 ##'
 ##' @examples
-##' testshlib()
+##' systest()
 ##'
 ##' @export
-testshlib <- function(dllname="xyz",loc=tempdir()) {
+systest <- function() {
   
-  cpp <- file.path(loc,paste0(dllname, ".cpp"))
-  dll <- file.path(loc,paste0(dllname,.Platform$dynlib.ext))
+  cmd <- "ls -l"
+  
+  status1 <- system(cmd,intern=TRUE,ignore.stdout=TRUE)
 
-  f.con <- file(cpp, open="w")
-  cat("#include <R.h>\n",file=f.con)
-  cat(c(
-  "void foo() {",
-  "double x = 2;",
-  "double y = 3;",
-  "x = x+y;",
-  "}"),sep="\n",file=f.con)
-  close(f.con)
-
-  cmd <- paste0("R CMD SHLIB ", cpp)
-  status <- system(cmd)
-  dyn.load(dll)
-  dyn.unload(dll)
-  return(status)
+  if(!is.null(attr(status1,"status"))) {
+    
+    status2 <- system(cmd,intern=TRUE, ignore.stdout=FALSE)
+    status3 <- system(cmd,intern=FALSE,ignore.stdout=FALSE)
+    
+    stop("intern/ignore   "  , attr(status1,"status"), " ", 
+         "intern/noignore "  , attr(status2,"status"), " ",
+         "nointern/ignore "  , status3) 
+  }
+  
+  return(status1)
+  
 }
 
 

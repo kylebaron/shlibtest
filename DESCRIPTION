@@ -1,4 +1,4 @@
-Package: shlibtest
+Package: systest
 Type: Package
 Title: Just a Test Package
 Version: 0.1.0
