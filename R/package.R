@@ -4,7 +4,7 @@
 ##'
 ##'
 ##' @param dllname character
-##' @param loc where to build the dll
+##' @param loc where to build the 
 ##'
 ##' @examples
 ##' testshlib()
@@ -29,6 +29,7 @@ testshlib <- function(dllname="xyz",loc=tempdir()) {
   status <- system(cmd)
   dyn.load(dll)
   dyn.unload(dll)
+  return(status)
 }
 
 

@@ -9,7 +9,7 @@ testshlib(dllname = "xyz", loc = tempdir())
 \arguments{
 \item{dllname}{character}
 
-\item{loc}{where to build the dll}
+\item{loc}{where to build the}
 }
 \description{
 Test system / R CMD SHLIB.
