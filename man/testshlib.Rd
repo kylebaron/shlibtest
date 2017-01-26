@@ -4,10 +4,12 @@
 \alias{testshlib}
 \title{Test system / R CMD SHLIB.}
 \usage{
-testshlib(dllname = "xyz")
+testshlib(dllname = "xyz", loc = tempdir())
 }
 \arguments{
 \item{dllname}{character}
+
+\item{loc}{where to build the dll}
 }
 \description{
 Test system / R CMD SHLIB.

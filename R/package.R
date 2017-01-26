@@ -4,16 +4,18 @@
 ##'
 ##'
 ##' @param dllname character
+##' @param loc where to build the dll
 ##'
 ##' @examples
 ##' testshlib()
 ##'
 ##' @export
-testshlib <- function(dllname="xyz") {
-  file <- paste0(dllname, ".cpp")
-  dll <- paste0(dllname,.Platform$dynlib.ext)
+testshlib <- function(dllname="xyz",loc=tempdir()) {
+  
+  cpp <- file.path(loc,paste0(dllname, ".cpp"))
+  dll <- file.path(loc,paste0(dllname,.Platform$dynlib.ext))
 
-  f.con <- file(file, open="w")
+  f.con <- file(cpp, open="w")
   cat("#include <R.h>\n",file=f.con)
   cat(c(
   "void foo() {",
@@ -23,7 +25,7 @@ testshlib <- function(dllname="xyz") {
   "}"),sep="\n",file=f.con)
   close(f.con)
 
-  cmd <- paste0("R CMD SHLIB ", file)
+  cmd <- paste0("R CMD SHLIB ", cpp)
   status <- system(cmd)
   dyn.load(dll)
   dyn.unload(dll)
